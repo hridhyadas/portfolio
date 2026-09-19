@@ -323,6 +323,38 @@
         transform: translateY(0) !important;
       }
 
+      /* Unified Editorial Section Headings */
+      .section-heading-unified {
+        font-family: "Cormorant Garamond", serif !important;
+        font-weight: 400 !important;
+        text-transform: none !important;
+        letter-spacing: -0.015em;
+      }
+      @media (max-width: 639px) {
+        .section-heading-unified {
+          font-size: 1.85rem !important;
+          line-height: 1.15 !important;
+        }
+      }
+      @media (min-width: 640px) and (max-width: 767px) {
+        .section-heading-unified {
+          font-size: 2.25rem !important;
+          line-height: 1.12 !important;
+        }
+      }
+      @media (min-width: 768px) and (max-width: 1023px) {
+        .section-heading-unified {
+          font-size: 2.75rem !important;
+          line-height: 1.1 !important;
+        }
+      }
+      @media (min-width: 1024px) {
+        .section-heading-unified {
+          font-size: 3.25rem !important;
+          line-height: 1.08 !important;
+        }
+      }
+
       /* Portfolio Editorial Slow Clip-Path Reveal & Card Scale */
       .portfolio-card {
         opacity: 0;
@@ -437,10 +469,26 @@
         color: #d1d5db;
       }
 
-      /* Package Silhouette Parallax Container */
+      /* Package Silhouette Parallax Container & Image Framing */
       #package-img-container {
         will-change: transform;
         transform-origin: center center;
+      }
+      #package-bg-img {
+        object-fit: cover;
+        object-position: top center;
+      }
+      @media (max-width: 1023px) {
+        #package-img-container {
+          top: 0 !important;
+          height: 100% !important;
+          transform: none !important;
+        }
+        #package-bg-img {
+          object-fit: cover !important;
+          object-position: top center !important;
+          transform: none !important;
+        }
       }
 
       /* Package Cards Hover */
@@ -787,7 +835,8 @@
           grid-template-columns: 1fr !important;
         }
         #packages [class*="lg:col-span-4"] {
-          min-height: 220px;
+          min-height: 380px !important;
+          height: 380px !important;
         }
 
         /* Testimonials: full-width cards */
@@ -940,7 +989,8 @@
 
         /* Package right image: full-width on tablet */
         #packages [class*="lg:col-span-4"] {
-          min-height: 260px;
+          min-height: 440px !important;
+          height: 440px !important;
         }
 
         /* Instagram: 4-col on tablet */
@@ -954,10 +1004,11 @@
           min-width: unset !important;
         }
 
-        /* Portfolio image wrapping */
+        /* Package image wrapping */
         #package-img-container img {
-          max-height: 320px;
-          object-fit: cover;
+          max-height: none !important;
+          object-fit: cover !important;
+          object-position: top center !important;
         }
 
         /* Disable custom cursor on touch devices */
@@ -1291,12 +1342,14 @@
           class="max-w-2xl flex flex-col items-center md:items-start text-center md:text-left"
         >
           <!-- Subtitle -->
-          <span
-            class="text-[11px] font-semibold tracking-[0.25em] text-lens-gold uppercase block mb-3 hero-layer-heading hero-intro-hide"
-            data-intro-delay="200"
-          >
-            EVERY STORY HAS A SOUL,
-          </span>
+          <div class="inline-flex items-center gap-2 mb-3 hero-layer-heading hero-intro-hide" data-intro-delay="200">
+            <span class="w-2 h-2 rounded-full bg-lens-gold animate-pulse"></span>
+            <span
+              class="text-[10px] sm:text-[11px] font-semibold tracking-[0.25em] sm:tracking-[0.28em] text-lens-gold uppercase block"
+            >
+              EVERY STORY HAS A SOUL
+            </span>
+          </div>
           <!-- Main Headline -->
           <h1
             class="text-3xl sm:text-4xl md:text-6xl lg:text-[68px] font-serif font-normal text-white leading-[1.08] tracking-tight mb-0 hero-layer-heading hero-intro-hide"
@@ -1441,11 +1494,9 @@
 
             <!-- Main Headline -->
             <h2
-              class="font-serif font-bold text-3xl sm:text-4xl md:text-5xl lg:text-[54px] leading-[1.08] tracking-tight text-[#111113] mb-6 sm:mb-8 uppercase"
+              class="font-serif font-normal text-3xl sm:text-4xl md:text-5xl lg:text-[52px] leading-[1.1] tracking-tight text-[#111113] mb-6 sm:mb-8 section-heading-unified heading-scroll-focus"
             >
-              STORIES,<br />
-              SEEN<br />
-              DIFFERENTLY.
+              Stories, Seen Differently
             </h2>
 
             <!-- Body Paragraphs -->
@@ -1708,12 +1759,16 @@
           class="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-4 border-b border-neutral-200 heading-scroll-focus"
         >
           <div>
-            <span
-              class="text-[11px] uppercase tracking-[0.25em] font-bold text-lens-goldDark block mb-1"
-              >MY PORTFOLIO</span
-            >
+            <div class="inline-flex items-center gap-2 mb-1.5">
+              <span class="w-2 h-2 rounded-full bg-lens-gold animate-pulse"></span>
+              <span
+                class="text-[10px] sm:text-[11px] font-semibold tracking-[0.25em] sm:tracking-[0.28em] text-lens-goldDark uppercase"
+              >
+                MY PORTFOLIO
+              </span>
+            </div>
             <h2
-              class="font-serif text-3xl md:text-5xl text-neutral-900 font-normal"
+              class="font-serif font-normal text-3xl sm:text-4xl md:text-5xl lg:text-[52px] leading-[1.1] tracking-tight text-neutral-900 section-heading-unified"
             >
               Moments I've Captured
             </h2>
@@ -1880,6 +1935,159 @@
             </div>
           </a>
         </div>
+
+        <!-- BEGIN: Featured Cinematic Video / Instagram Reel Showcase -->
+        <div
+          id="featured-video-reel"
+          class="mt-14 sm:mt-20 pt-10 sm:pt-14 border-t border-neutral-300/80 scroll-stagger-item"
+        >
+          <!-- Section Header Bar -->
+          <div
+            class="flex flex-col sm:flex-row sm:items-end justify-between mb-6 sm:mb-8 gap-4"
+          >
+            <div>
+              <div class="inline-flex items-center gap-2 mb-1.5">
+                <span class="w-2 h-2 rounded-full bg-lens-gold animate-pulse"></span>
+                <span
+                  class="text-[10px] sm:text-[11px] font-semibold tracking-[0.28em] text-lens-goldDark uppercase"
+                >
+                  CINEMATOGRAPHY IN MOTION
+                </span>
+              </div>
+              <h3
+                class="font-serif font-normal text-3xl sm:text-4xl md:text-5xl lg:text-[52px] leading-[1.1] tracking-tight text-neutral-900 section-heading-unified"
+              >
+                Stories That Move
+              </h3>
+            </div>
+            <a
+              id="insta-reel-header-btn"
+              href="https://www.instagram.com/reel/DB6OVX_J00R/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 text-xs tracking-wider uppercase font-semibold text-neutral-800 hover:text-lens-goldDark transition group/link self-start sm:self-auto"
+            >
+              <svg class="w-4 h-4 text-lens-goldDark group-hover/link:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path>
+              </svg>
+              <span>WATCH ON INSTAGRAM</span>
+              <span class="text-xs transition-transform group-hover/link:translate-x-0.5">↗</span>
+            </a>
+          </div>
+
+          <!-- Full-Width 16:9 Cinematic Video Frame -->
+          <div
+            class="relative w-full aspect-[16/9] rounded-2xl sm:rounded-3xl overflow-hidden shadow-[0_25px_60px_-15px_rgba(0,0,0,0.5)] border border-neutral-300/80 bg-black group"
+          >
+            <!-- Clickable Anchor covering the entire video -->
+            <a
+              id="insta-reel-video-link"
+              href="https://www.instagram.com/reel/DB6OVX_J00R/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block w-full h-full relative cursor-pointer"
+              aria-label="Click to watch wedding reel on Instagram"
+            >
+              <!-- Native Autoplaying Video (1276x718 native 16:9 reel) -->
+              <video
+                id="reel-native-video"
+                src="reel-video.mp4"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="auto"
+                class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.01]"
+              ></video>
+
+              <!-- Soft Vignette Gradient Overlays -->
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 pointer-events-none transition-opacity duration-300 group-hover:opacity-90"
+              ></div>
+
+              <!-- Top Left Tag -->
+              <div
+                class="absolute top-4 sm:top-6 left-4 sm:left-6 z-20 flex items-center gap-2 pointer-events-none"
+              >
+                <span
+                  class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-[10px] sm:text-xs tracking-wider uppercase text-white font-medium shadow-md"
+                >
+                  4K CINEMATOGRAPHY
+                </span>
+              </div>
+
+              
+              <!-- Bottom Overlay Film Metadata -->
+              <div
+                class="absolute bottom-0 inset-x-0 p-5 sm:p-8 z-20 flex flex-col sm:flex-row sm:items-end justify-between gap-3 pointer-events-none"
+              >
+                <div>
+                  <span
+                    class="text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-lens-gold font-semibold block mb-1"
+                  >
+                    PALACE ROYAL WEDDING
+                  </span>
+                  <h4
+                    class="font-serif text-lg sm:text-2xl md:text-3xl text-white font-normal drop-shadow-md"
+                  >
+                    Grand Heritage Celebration
+                  </h4>
+                </div>
+                <div
+                  class="flex items-center gap-2 text-xs text-neutral-300 font-light"
+                >
+                  <span>@hiran_kumar_unni</span>
+                  <span class="text-lens-gold">↗</span>
+                </div>
+              </div>
+            </a>
+
+            <!-- Sound Mute/Unmute Toggle Button -->
+            <button
+              type="button"
+              onclick="toggleReelAudio(event)"
+              class="absolute top-4 sm:top-6 right-4 sm:right-6 z-30 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-black/65 backdrop-blur-md border border-white/20 text-white hover:text-lens-gold hover:border-lens-gold flex items-center justify-center transition-all duration-300 hover:scale-110 cursor-pointer shadow-lg focus:outline-none"
+              aria-label="Toggle sound"
+              title="Toggle audio"
+            >
+              <svg
+                id="reel-audio-icon-muted"
+                class="w-4 h-4 sm:w-5 sm:h-5 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+                ></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"
+                ></path>
+              </svg>
+              <svg
+                id="reel-audio-icon-unmuted"
+                class="w-4 h-4 sm:w-5 sm:h-5 text-lens-gold hidden"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <!-- END: Featured Cinematic Video / Instagram Reel Showcase -->
       </div>
     </section>
     <!-- END: PortfolioSection -->
@@ -1899,15 +2107,18 @@
             class="lg:col-span-8 p-8 md:p-12 flex flex-col justify-between z-10"
           >
             <div>
-              <span
-                class="text-[10px] tracking-[0.25em] uppercase text-lens-gold font-semibold block mb-2"
-              >
-                CHOOSE YOUR PERFECT PACKAGE
-              </span>
+              <div class="inline-flex items-center gap-2 mb-2">
+                <span class="w-2 h-2 rounded-full bg-lens-gold animate-pulse"></span>
+                <span
+                  class="text-[10px] sm:text-[11px] tracking-[0.25em] sm:tracking-[0.28em] uppercase text-lens-gold font-semibold block"
+                >
+                  CHOOSE YOUR PERFECT PACKAGE
+                </span>
+              </div>
               <h3
-                class="font-serif text-3xl md:text-4xl text-white font-normal mb-8 heading-scroll-focus"
+                class="font-serif font-normal text-3xl sm:text-4xl md:text-5xl lg:text-[52px] leading-[1.1] tracking-tight text-white mb-8 heading-scroll-focus section-heading-unified"
               >
-                Packages That Fit<br />Every Moment
+                Packages That Fit Every Moment
               </h3>
               <a
                 class="inline-block bg-lens-goldLight hover:bg-lens-gold text-neutral-900 text-xs uppercase font-bold tracking-wider px-6 py-2.5 rounded-sm transition mb-10 btn-luxury btn-magnetic ripple-target"
@@ -2027,24 +2238,24 @@
           </div>
           <!-- Right Side: Silhouette Photography Image with Deep Inertial Parallax -->
           <div
-            class="lg:col-span-4 relative min-h-[320px] lg:min-h-full overflow-hidden"
+            class="lg:col-span-4 relative min-h-[380px] sm:min-h-[440px] lg:min-h-full overflow-hidden"
           >
             <div
               id="package-img-container"
-              class="w-full h-[126%] -top-[13%] absolute inset-0"
+              class="w-full h-full lg:h-[126%] top-0 lg:-top-[13%] absolute inset-0"
             >
               <img
                 id="package-bg-img"
-                alt="Photographer silhouette at sunset"
-                class="w-full h-full object-cover object-center filter contrast-125 scale-105"
+                alt="Photographer holding camera"
+                class="w-full h-full object-cover object-top lg:object-center filter contrast-115 scale-100 lg:scale-105 transition-transform duration-700"
                 src="package.webp"
               />
             </div>
             <div
-              class="absolute inset-0 bg-gradient-to-r from-[#101012] via-transparent to-transparent hidden lg:block"
+              class="absolute inset-0 bg-gradient-to-r from-[#101012] via-transparent to-transparent hidden lg:block pointer-events-none"
             ></div>
             <div
-              class="absolute inset-0 bg-gradient-to-t from-[#101012] via-transparent to-transparent lg:hidden"
+              class="absolute inset-0 bg-gradient-to-t from-[#101012] via-[#101012]/30 to-transparent lg:hidden pointer-events-none"
             ></div>
           </div>
         </div>
@@ -2061,12 +2272,16 @@
       <div class="max-w-[1400px] mx-auto">
         <!-- Section Title -->
         <div class="text-center mb-14 heading-scroll-focus">
-          <span
-            class="text-[11px] uppercase tracking-[0.25em] font-bold text-lens-goldDark block mb-1"
-            >Testimonials</span
-          >
+          <div class="inline-flex items-center justify-center gap-2 mb-2">
+            <span class="w-2 h-2 rounded-full bg-lens-gold animate-pulse"></span>
+            <span
+              class="text-[10px] sm:text-[11px] uppercase tracking-[0.25em] sm:tracking-[0.28em] font-semibold text-lens-goldDark"
+            >
+              TESTIMONIALS
+            </span>
+          </div>
           <h2
-            class="font-serif text-3xl md:text-5xl font-normal text-neutral-900 mb-3"
+            class="font-serif font-normal text-3xl sm:text-4xl md:text-5xl lg:text-[52px] leading-[1.1] tracking-tight text-neutral-900 mb-3 section-heading-unified"
           >
             Words That Mean Everything
           </h2>
@@ -2237,21 +2452,20 @@
           >
             <div>
               <!-- Small Label: GET IN TOUCH -->
-              <div class="flex items-center gap-3 mb-5 sm:mb-6">
-                <span class="w-8 h-px bg-lens-gold/70"></span>
+              <div class="inline-flex items-center gap-2 mb-4 sm:mb-5">
+                <span class="w-2 h-2 rounded-full bg-lens-gold animate-pulse"></span>
                 <span
-                  class="text-[11px] font-semibold tracking-[0.28em] text-lens-gold uppercase"
+                  class="text-[10px] sm:text-[11px] font-semibold tracking-[0.25em] sm:tracking-[0.28em] text-lens-gold uppercase"
                 >
                   GET IN TOUCH
                 </span>
               </div>
 
-              <!-- Main Heading: LET'S CREATE SOMETHING TIMELESS. -->
+              <!-- Main Heading -->
               <h2
-                class="font-serif font-normal text-4xl sm:text-5xl lg:text-[54px] leading-[1.06] tracking-tight text-white uppercase mb-6"
+                class="font-serif font-normal text-3xl sm:text-4xl md:text-5xl lg:text-[52px] leading-[1.1] tracking-tight text-white mb-6 section-heading-unified"
               >
-                LET'S CREATE<br />
-                SOMETHING TIMELESS.
+                Let's Create Something Timeless
               </h2>
 
               <!-- Description -->
@@ -2494,141 +2708,181 @@
           class="grid grid-cols-4 sm:grid-cols-8 gap-2.5 w-full flex-grow"
         >
           <!-- Thumb 1 -->
-          <div
-            class="h-16 rounded-md overflow-hidden bg-white/5 border border-white/10 group cursor-pointer insta-box"
+          <a
+            href="https://www.instagram.com/p/DEhoOfdTTIl/?stkn=NGhjczVuM2llM3hw"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="aspect-square rounded-md overflow-hidden bg-white/5 border border-white/10 group cursor-pointer insta-box relative block"
+            aria-label="View Instagram post DEhoOfdTTIl"
           >
             <img
-              alt="Insta 1"
-              class="w-full h-full object-cover"
+              alt="Instagram Post 1"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               src="insta1.webp"
+              loading="lazy"
             />
             <div class="insta-hover-overlay">
-              <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+              <svg class="w-5 h-5 text-lens-gold" fill="currentColor" viewbox="0 0 24 24">
                 <path
                   d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
                 ></path>
               </svg>
             </div>
-          </div>
+          </a>
           <!-- Thumb 2 -->
-          <div
-            class="h-16 rounded-md overflow-hidden bg-white/5 border border-white/10 group cursor-pointer insta-box"
+          <a
+            href="https://www.instagram.com/p/CvlVmdtPA0A/?stkn=bDB4ZXA0bDVhNWh4"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="aspect-square rounded-md overflow-hidden bg-white/5 border border-white/10 group cursor-pointer insta-box relative block"
+            aria-label="View Instagram post CvlVmdtPA0A"
           >
             <img
-              alt="Insta 2"
-              class="w-full h-full object-cover"
+              alt="Instagram Post 2"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               src="insta2.webp"
+              loading="lazy"
             />
             <div class="insta-hover-overlay">
-              <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+              <svg class="w-5 h-5 text-lens-gold" fill="currentColor" viewbox="0 0 24 24">
                 <path
                   d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
                 ></path>
               </svg>
             </div>
-          </div>
+          </a>
           <!-- Thumb 3 -->
-          <div
-            class="h-16 rounded-md overflow-hidden bg-white/5 border border-white/10 group cursor-pointer insta-box"
+          <a
+            href="https://www.instagram.com/p/Cr1B1JJt2H_/?stkn=dW5kNm5pODlkMzM0"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="aspect-square rounded-md overflow-hidden bg-white/5 border border-white/10 group cursor-pointer insta-box relative block"
+            aria-label="View Instagram post Cr1B1JJt2H_"
           >
             <img
-              alt="Insta 3"
-              class="w-full h-full object-cover"
+              alt="Instagram Post 3"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               src="insta3.webp"
+              loading="lazy"
             />
             <div class="insta-hover-overlay">
-              <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+              <svg class="w-5 h-5 text-lens-gold" fill="currentColor" viewbox="0 0 24 24">
                 <path
                   d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
                 ></path>
               </svg>
             </div>
-          </div>
+          </a>
           <!-- Thumb 4 -->
-          <div
-            class="h-16 rounded-md overflow-hidden bg-white/5 border border-white/10 group cursor-pointer insta-box"
+          <a
+            href="https://www.instagram.com/p/CpkJ6dvt40m/?stkn=MXc4MGgycWQxbmN2eA=="
+            target="_blank"
+            rel="noopener noreferrer"
+            class="aspect-square rounded-md overflow-hidden bg-white/5 border border-white/10 group cursor-pointer insta-box relative block"
+            aria-label="View Instagram post CpkJ6dvt40m"
           >
             <img
-              alt="Insta 4"
-              class="w-full h-full object-cover"
+              alt="Instagram Post 4"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               src="insta4.webp"
+              loading="lazy"
             />
             <div class="insta-hover-overlay">
-              <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+              <svg class="w-5 h-5 text-lens-gold" fill="currentColor" viewbox="0 0 24 24">
                 <path
                   d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
                 ></path>
               </svg>
             </div>
-          </div>
+          </a>
           <!-- Thumb 5 -->
-          <div
-            class="h-16 rounded-md overflow-hidden bg-white/5 border border-white/10 group cursor-pointer insta-box"
+          <a
+            href="https://www.instagram.com/p/CKTx5mtAPfp/?stkn=MTBvNTVtcmcycm9icQ=="
+            target="_blank"
+            rel="noopener noreferrer"
+            class="aspect-square rounded-md overflow-hidden bg-white/5 border border-white/10 group cursor-pointer insta-box relative block"
+            aria-label="View Instagram post CKTx5mtAPfp"
           >
             <img
-              alt="Insta 5"
-              class="w-full h-full object-cover"
+              alt="Instagram Post 5"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               src="insta5.webp"
+              loading="lazy"
             />
             <div class="insta-hover-overlay">
-              <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+              <svg class="w-5 h-5 text-lens-gold" fill="currentColor" viewbox="0 0 24 24">
                 <path
                   d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
                 ></path>
               </svg>
             </div>
-          </div>
+          </a>
           <!-- Thumb 6 -->
-          <div
-            class="h-16 rounded-md overflow-hidden bg-white/5 border border-white/10 group cursor-pointer insta-box"
+          <a
+            href="https://www.instagram.com/p/B7EKmPfg9m7/?stkn=NGxlZ2c0dXpob2hp"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="aspect-square rounded-md overflow-hidden bg-white/5 border border-white/10 group cursor-pointer insta-box relative block"
+            aria-label="View Instagram post B7EKmPfg9m7"
           >
             <img
-              alt="Insta 6"
-              class="w-full h-full object-cover"
+              alt="Instagram Post 6"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               src="insta6.webp"
+              loading="lazy"
             />
             <div class="insta-hover-overlay">
-              <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+              <svg class="w-5 h-5 text-lens-gold" fill="currentColor" viewbox="0 0 24 24">
                 <path
                   d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
                 ></path>
               </svg>
             </div>
-          </div>
+          </a>
           <!-- Thumb 7 -->
-          <div
-            class="h-16 rounded-md overflow-hidden bg-white/5 border border-white/10 group cursor-pointer insta-box"
+          <a
+            href="https://www.instagram.com/p/B7EKmPfg9m7/?stkn=NGxlZ2c0dXpob2hp"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="aspect-square rounded-md overflow-hidden bg-white/5 border border-white/10 group cursor-pointer insta-box relative block"
+            aria-label="View Instagram post B7EKmPfg9m7"
           >
             <img
-              alt="Insta 7"
-              class="w-full h-full object-cover"
+              alt="Instagram Post 7"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               src="insta7.webp"
+              loading="lazy"
             />
             <div class="insta-hover-overlay">
-              <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+              <svg class="w-5 h-5 text-lens-gold" fill="currentColor" viewbox="0 0 24 24">
                 <path
                   d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
                 ></path>
               </svg>
             </div>
-          </div>
+          </a>
           <!-- Thumb 8 -->
-          <div
-            class="h-16 rounded-md overflow-hidden bg-white/5 border border-white/10 group cursor-pointer insta-box"
+          <a
+            href="https://www.instagram.com/p/CwA1z-2P4TQ/?img_index=6&stkn=eGIxcXI2ejF0cG1l"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="aspect-square rounded-md overflow-hidden bg-white/5 border border-white/10 group cursor-pointer insta-box relative block"
+            aria-label="View Instagram post CwA1z-2P4TQ"
           >
             <img
-              alt="Insta 8"
-              class="w-full h-full object-cover"
+              alt="Instagram Post 8"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               src="insta8.webp"
+              loading="lazy"
             />
             <div class="insta-hover-overlay">
-              <svg class="w-5 h-5" fill="currentColor" viewbox="0 0 24 24">
+              <svg class="w-5 h-5 text-lens-gold" fill="currentColor" viewbox="0 0 24 24">
                 <path
                   d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
                 ></path>
               </svg>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </section>
@@ -3279,15 +3533,19 @@
             // 3F. PACKAGES SILHOUETTE DEEP PARALLAX
             // --------------------------------------------------
             if (packagesSection && packageImgContainer) {
-              const packRect = packagesSection.getBoundingClientRect();
-              if (packRect.top < winH && packRect.bottom > 0) {
-                const packNorm = clamp(
-                  (winH - packRect.top) / (winH + packRect.height),
-                  0,
-                  1,
-                );
-                const packTranslateY = (packNorm - 0.5) * (isMobile ? 30 : 70);
-                packageImgContainer.style.transform = `translate3d(0, ${packTranslateY.toFixed(1)}px, 0)`;
+              if (!isMobile) {
+                const packRect = packagesSection.getBoundingClientRect();
+                if (packRect.top < winH && packRect.bottom > 0) {
+                  const packNorm = clamp(
+                    (winH - packRect.top) / (winH + packRect.height),
+                    0,
+                    1,
+                  );
+                  const packTranslateY = (packNorm - 0.5) * 60;
+                  packageImgContainer.style.transform = `translate3d(0, ${packTranslateY.toFixed(1)}px, 0)`;
+                }
+              } else {
+                packageImgContainer.style.transform = "none";
               }
             }
 
@@ -3693,6 +3951,43 @@
                 btn.textContent = original;
               }, 2000);
             });
+          }
+        };
+
+        window.setInstagramReel = function (url) {
+          if (!url) return;
+          let reelUrl = url.trim();
+          const ctaBtn = document.getElementById("insta-reel-cta-btn");
+          const directLink = document.getElementById("insta-reel-direct-link");
+          const frame = document.getElementById("insta-reel-embed-frame");
+
+          if (ctaBtn) ctaBtn.href = reelUrl;
+          if (directLink) directLink.href = reelUrl;
+
+          let embedUrl = reelUrl;
+          if (!embedUrl.includes("/embed")) {
+            embedUrl = embedUrl.replace(/\/+$/, "") + "/embed";
+          }
+          if (frame) frame.src = embedUrl;
+        };
+
+        window.toggleReelAudio = function (e) {
+          if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
+          const video = document.getElementById("reel-native-video");
+          const iconMuted = document.getElementById("reel-audio-icon-muted");
+          const iconUnmuted = document.getElementById("reel-audio-icon-unmuted");
+          if (video) {
+            video.muted = !video.muted;
+            if (video.muted) {
+              if (iconMuted) iconMuted.classList.remove("hidden");
+              if (iconUnmuted) iconUnmuted.classList.add("hidden");
+            } else {
+              if (iconMuted) iconMuted.classList.add("hidden");
+              if (iconUnmuted) iconUnmuted.classList.remove("hidden");
+            }
           }
         };
       });
