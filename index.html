@@ -1720,7 +1720,7 @@
           </div>
           <a
             class="mt-4 md:mt-0 text-xs tracking-wider uppercase font-semibold text-neutral-800 hover:text-lens-goldDark transition flex items-center space-x-1 link-hover-arrow"
-            href="#gallery"
+            href="portfolio.html"
           >
             <span>VIEW ALL GALLERIES</span>
             <span class="arrow-icon">→</span>
@@ -1732,10 +1732,12 @@
           class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5"
         >
           <!-- Portfolio 1: Wedding -->
-          <div
-            class="relative h-[390px] rounded-xl overflow-hidden shadow-lg group cursor-pointer portfolio-card"
+          <a
+            href="portfolio.html?filter=weddings"
+            class="block relative h-[390px] rounded-xl overflow-hidden shadow-lg group cursor-pointer portfolio-card text-decoration-none"
             data-card-index="0"
             data-base-tx="-12"
+            aria-label="View Wedding portfolio"
           >
             <div class="portfolio-img-wrap">
               <img
@@ -1756,12 +1758,14 @@
               >
               <h4 class="font-serif text-xl tracking-tight">Love Stories</h4>
             </div>
-          </div>
+          </a>
           <!-- Portfolio 2: Portraits -->
-          <div
-            class="relative h-[390px] rounded-xl overflow-hidden shadow-lg group cursor-pointer portfolio-card"
+          <a
+            href="portfolio.html?filter=portraits"
+            class="block relative h-[390px] rounded-xl overflow-hidden shadow-lg group cursor-pointer portfolio-card text-decoration-none"
             data-card-index="1"
             data-base-tx="-6"
+            aria-label="View Portraits portfolio"
           >
             <div class="portfolio-img-wrap">
               <img
@@ -1784,12 +1788,14 @@
                 People &amp; Expressions
               </h4>
             </div>
-          </div>
+          </a>
           <!-- Portfolio 3: Events -->
-          <div
-            class="relative h-[390px] rounded-xl overflow-hidden shadow-lg group cursor-pointer portfolio-card"
+          <a
+            href="portfolio.html?filter=events"
+            class="block relative h-[390px] rounded-xl overflow-hidden shadow-lg group cursor-pointer portfolio-card text-decoration-none"
             data-card-index="2"
             data-base-tx="0"
+            aria-label="View Events portfolio"
           >
             <div class="portfolio-img-wrap">
               <img
@@ -1812,12 +1818,14 @@
                 Moments &amp; Memories
               </h4>
             </div>
-          </div>
+          </a>
           <!-- Portfolio 4: Product -->
-          <div
-            class="relative h-[390px] rounded-xl overflow-hidden shadow-lg group cursor-pointer portfolio-card"
+          <a
+            href="portfolio.html?filter=product"
+            class="block relative h-[390px] rounded-xl overflow-hidden shadow-lg group cursor-pointer portfolio-card text-decoration-none"
             data-card-index="3"
             data-base-tx="6"
+            aria-label="View The Bump Diaries portfolio"
           >
             <div class="portfolio-img-wrap">
               <img
@@ -1840,12 +1848,14 @@
                 Golden Hour Motherhood
               </h4>
             </div>
-          </div>
+          </a>
           <!-- Portfolio 5: Nature -->
-          <div
-            class="relative h-[390px] rounded-xl overflow-hidden shadow-lg group cursor-pointer portfolio-card"
+          <a
+            href="portfolio.html?filter=cinematic"
+            class="block relative h-[390px] rounded-xl overflow-hidden shadow-lg group cursor-pointer portfolio-card text-decoration-none"
             data-card-index="4"
             data-base-tx="12"
+            aria-label="View Nature portfolio"
           >
             <div class="portfolio-img-wrap">
               <img
@@ -1868,7 +1878,7 @@
                 Wild &amp; Beautiful
               </h4>
             </div>
-          </div>
+          </a>
         </div>
       </div>
     </section>
@@ -2329,7 +2339,10 @@
                 method="POST"
                 enctype="text/plain"
                 class="space-y-6"
-                onsubmit="event.preventDefault(); submitEnquiry(this);"
+                onsubmit="
+                  event.preventDefault();
+                  submitEnquiry(this);
+                "
               >
                 <!-- Row 1: FIRST NAME & LAST NAME -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -2440,7 +2453,8 @@
                   id="enquiry-feedback"
                   class="hidden p-4 rounded bg-lens-gold/15 border border-lens-gold/40 text-lens-goldLight text-xs tracking-wider uppercase text-center mt-4"
                 >
-                  Thank you. Your message has been prepared for hirankumarh@gmail.com — opening your email client.
+                  Thank you. Your message has been prepared for
+                  hirankumarh@gmail.com — opening your email client.
                 </div>
               </form>
             </div>
@@ -3577,14 +3591,16 @@
 
           const fullName = `${firstName} ${lastName}`.trim();
           const subject = encodeURIComponent(
-            fullName ? `Photography Enquiry from ${fullName}` : "New Photography Enquiry"
+            fullName
+              ? `Photography Enquiry from ${fullName}`
+              : "New Photography Enquiry",
           );
           const body = encodeURIComponent(
             `Name: ${fullName || "Not provided"}\n` +
-            `Email: ${email || "Not provided"}\n` +
-            `Phone: ${phone || "Not provided"}\n\n` +
-            `Message:\n${message || "No message provided"}\n\n` +
-            `--\nSent from Hiran Kumar Portfolio Website`
+              `Email: ${email || "Not provided"}\n` +
+              `Phone: ${phone || "Not provided"}\n\n` +
+              `Message:\n${message || "No message provided"}\n\n` +
+              `--\nSent from Hiran Kumar Portfolio Website`,
           );
 
           // Trigger email to hirankumarh@gmail.com
@@ -3614,16 +3630,32 @@
         window.showWhatsAppPopover = function () {
           const popover = document.getElementById("whatsapp-popover");
           if (popover) {
-            popover.classList.remove("opacity-0", "pointer-events-none", "translate-y-2");
-            popover.classList.add("opacity-100", "pointer-events-auto", "translate-y-0");
+            popover.classList.remove(
+              "opacity-0",
+              "pointer-events-none",
+              "translate-y-2",
+            );
+            popover.classList.add(
+              "opacity-100",
+              "pointer-events-auto",
+              "translate-y-0",
+            );
           }
         };
 
         window.hideWhatsAppPopover = function () {
           const popover = document.getElementById("whatsapp-popover");
           if (popover) {
-            popover.classList.add("opacity-0", "pointer-events-none", "translate-y-2");
-            popover.classList.remove("opacity-100", "pointer-events-auto", "translate-y-0");
+            popover.classList.add(
+              "opacity-0",
+              "pointer-events-none",
+              "translate-y-2",
+            );
+            popover.classList.remove(
+              "opacity-100",
+              "pointer-events-auto",
+              "translate-y-0",
+            );
           }
         };
 
@@ -3638,13 +3670,13 @@
           showWhatsAppPopover();
           const phoneNumber = "971529607091";
           const message = encodeURIComponent(
-            "Hello Hiran, I would like to enquire about your photography & cinematography services."
+            "Hello Hiran, I would like to enquire about your photography & cinematography services.",
           );
           setTimeout(() => {
             window.open(
               `https://wa.me/${phoneNumber}?text=${message}`,
               "_blank",
-              "noopener,noreferrer"
+              "noopener,noreferrer",
             );
           }, 500);
         };
@@ -3740,7 +3772,8 @@
         id="whatsapp-notification"
         class="hidden fixed bottom-24 right-6 bg-[#16161A]/95 backdrop-blur-md text-white border border-lens-gold/50 px-5 py-3 rounded-lg shadow-2xl text-xs tracking-wider z-[9999] transition-all"
       >
-        <span class="text-lens-gold font-semibold">WhatsApp:</span> Opening chat with <strong>+971 52 960 7091</strong>...
+        <span class="text-lens-gold font-semibold">WhatsApp:</span> Opening chat
+        with <strong>+971 52 960 7091</strong>...
       </div>
     </aside>
   </body>
